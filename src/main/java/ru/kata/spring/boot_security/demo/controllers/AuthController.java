@@ -39,16 +39,16 @@ public class AuthController {
 
     @PostMapping("/registration")
     public String performRegistration(@ModelAttribute("user") User user, @RequestParam(value = "roles", required = false) List<String> roles) {
-        if (roles != null) {
-            Set<Role> userRoles = new HashSet<>();
-            for (String role : roles) {
-                Role existingRole = roleRepository.findByName(role);
-                if (existingRole != null) {
-                    userRoles.add(existingRole);
-                }
-            }
-            user.setRoles(userRoles);
-        }
+//        if (roles != null) {
+//            Set<Role> userRoles = new HashSet<>();
+//            for (String role : roles) {
+//                Role existingRole = roleRepository.findByName(role);
+//                if (existingRole != null) {
+//                    userRoles.add(existingRole);
+//                }
+//            }
+//            user.setRoles(userRoles);
+//        }
         userRepository.save(user);
         return "redirect:/auth/login";
     }
